@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            comboBox1 = new ComboBox();
-            label1 = new Label();
+            cmbAlgorithm = new ComboBox();
+            lblSeed1 = new Label();
             txtSeed = new TextBox();
             txtNumOfNumbers = new TextBox();
             label2 = new Label();
@@ -38,25 +38,30 @@
             btnAverageTest = new Button();
             btnVariabilityTest = new Button();
             btnUniformentTest = new Button();
+            label3 = new Label();
+            txtPivot = new TextBox();
+            lblPivot = new Label();
             SuspendLayout();
             // 
-            // comboBox1
+            // cmbAlgorithm
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Seleccione un algoritmo", "Cuadrados medios", "Productos medios", "Multiplicador constante" });
-            comboBox1.Location = new Point(247, 51);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(207, 28);
-            comboBox1.TabIndex = 0;
+            cmbAlgorithm.FormattingEnabled = true;
+            cmbAlgorithm.Items.AddRange(new object[] { "Cuadrados medios", "Productos medios", "Multiplicador constante" });
+            cmbAlgorithm.Location = new Point(461, 47);
+            cmbAlgorithm.Name = "cmbAlgorithm";
+            cmbAlgorithm.Size = new Size(207, 28);
+            cmbAlgorithm.TabIndex = 0;
+            cmbAlgorithm.Text = "Seleccione un algoritmo";
+            cmbAlgorithm.SelectedIndexChanged += cmbAlgorithm_SelectedIndexChanged;
             // 
-            // label1
+            // lblSeed1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(55, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(58, 20);
-            label1.TabIndex = 1;
-            label1.Text = "Semilla";
+            lblSeed1.AutoSize = true;
+            lblSeed1.Location = new Point(55, 28);
+            lblSeed1.Name = "lblSeed1";
+            lblSeed1.Size = new Size(58, 20);
+            lblSeed1.TabIndex = 1;
+            lblSeed1.Text = "Semilla";
             // 
             // txtSeed
             // 
@@ -67,7 +72,7 @@
             // 
             // txtNumOfNumbers
             // 
-            txtNumOfNumbers.Location = new Point(55, 121);
+            txtNumOfNumbers.Location = new Point(255, 51);
             txtNumOfNumbers.Name = "txtNumOfNumbers";
             txtNumOfNumbers.Size = new Size(160, 27);
             txtNumOfNumbers.TabIndex = 4;
@@ -75,7 +80,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(55, 98);
+            label2.Location = new Point(255, 28);
             label2.Name = "label2";
             label2.Size = new Size(151, 20);
             label2.TabIndex = 3;
@@ -84,23 +89,24 @@
             // listRandomNumbers
             // 
             listRandomNumbers.FormattingEnabled = true;
-            listRandomNumbers.Location = new Point(55, 173);
+            listRandomNumbers.Location = new Point(65, 261);
             listRandomNumbers.Name = "listRandomNumbers";
             listRandomNumbers.Size = new Size(160, 364);
             listRandomNumbers.TabIndex = 5;
             // 
             // btnGenerate
             // 
-            btnGenerate.Location = new Point(247, 121);
+            btnGenerate.Location = new Point(461, 117);
             btnGenerate.Name = "btnGenerate";
             btnGenerate.Size = new Size(207, 27);
             btnGenerate.TabIndex = 6;
-            btnGenerate.Text = "Generar";
+            btnGenerate.Text = "Generar números";
             btnGenerate.UseVisualStyleBackColor = true;
+            btnGenerate.Click += btnGenerate_Click;
             // 
             // btnAverageTest
             // 
-            btnAverageTest.Location = new Point(247, 188);
+            btnAverageTest.Location = new Point(267, 268);
             btnAverageTest.Name = "btnAverageTest";
             btnAverageTest.Size = new Size(207, 27);
             btnAverageTest.TabIndex = 7;
@@ -109,7 +115,7 @@
             // 
             // btnVariabilityTest
             // 
-            btnVariabilityTest.Location = new Point(247, 249);
+            btnVariabilityTest.Location = new Point(267, 329);
             btnVariabilityTest.Name = "btnVariabilityTest";
             btnVariabilityTest.Size = new Size(207, 27);
             btnVariabilityTest.TabIndex = 8;
@@ -118,18 +124,50 @@
             // 
             // btnUniformentTest
             // 
-            btnUniformentTest.Location = new Point(247, 304);
+            btnUniformentTest.Location = new Point(267, 384);
             btnUniformentTest.Name = "btnUniformentTest";
             btnUniformentTest.Size = new Size(207, 27);
             btnUniformentTest.TabIndex = 9;
             btnUniformentTest.Text = "Prueba de uniformidad";
             btnUniformentTest.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(65, 228);
+            label3.Name = "label3";
+            label3.Size = new Size(143, 20);
+            label3.TabIndex = 10;
+            label3.Text = "Números generados";
+            // 
+            // txtPivot
+            // 
+            txtPivot.Enabled = false;
+            txtPivot.Location = new Point(55, 117);
+            txtPivot.Name = "txtPivot";
+            txtPivot.Size = new Size(160, 27);
+            txtPivot.TabIndex = 12;
+            txtPivot.Visible = false;
+            // 
+            // lblPivot
+            // 
+            lblPivot.AutoSize = true;
+            lblPivot.Enabled = false;
+            lblPivot.Location = new Point(55, 94);
+            lblPivot.Name = "lblPivot";
+            lblPivot.Size = new Size(70, 20);
+            lblPivot.TabIndex = 11;
+            lblPivot.Text = "Semilla 2";
+            lblPivot.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(501, 549);
+            ClientSize = new Size(806, 675);
+            Controls.Add(txtPivot);
+            Controls.Add(lblPivot);
+            Controls.Add(label3);
             Controls.Add(btnUniformentTest);
             Controls.Add(btnVariabilityTest);
             Controls.Add(btnAverageTest);
@@ -138,8 +176,8 @@
             Controls.Add(txtNumOfNumbers);
             Controls.Add(label2);
             Controls.Add(txtSeed);
-            Controls.Add(label1);
-            Controls.Add(comboBox1);
+            Controls.Add(lblSeed1);
+            Controls.Add(cmbAlgorithm);
             Name = "Form1";
             Text = "Generador de números aleatorios";
             ResumeLayout(false);
@@ -148,8 +186,8 @@
 
         #endregion
 
-        private ComboBox comboBox1;
-        private Label label1;
+        private ComboBox cmbAlgorithm;
+        private Label lblSeed1;
         private TextBox txtSeed;
         private TextBox txtNumOfNumbers;
         private Label label2;
@@ -158,5 +196,8 @@
         private Button btnAverageTest;
         private Button btnVariabilityTest;
         private Button btnUniformentTest;
+        private Label label3;
+        private TextBox txtPivot;
+        private Label lblPivot;
     }
 }
