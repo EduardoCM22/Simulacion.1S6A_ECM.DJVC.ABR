@@ -295,13 +295,69 @@ namespace Generador_de_Numeros_Aleatorios
                     numbers.Add(value);
                 }
             }
-            double mean = numbers.Average();
-            resultado.Text = mean.ToString();
-            double probability = Convert.ToDouble(numUpDwNC.Value)/100;
+
+            double probability = Convert.ToDouble(numUpDwNC.Value) / 100;
             probability = (1 - probability) / 2 + probability;
-            double li = 0.5-Normal.InvCDF(0, 1, probability)*(1/Math.Sqrt(12*numbers.Count));
-            resultado.Text = resultado.Text + " " + li.ToString();
+
+            double mean = numbers.Average();
+            double li = 0.5 - Normal.InvCDF(0, 1, probability) * (1 / Math.Sqrt(12 * numbers.Count));
+            double ls = 0.5 + Normal.InvCDF(0, 1, probability) * (1 / Math.Sqrt(12 * numbers.Count));
+
+            resultado.Text = mean.ToString() + " " + li.ToString() + " " + ls.ToString();
 
         }
+
+        private void btnVariabilityTest_Click(object sender, EventArgs e)
+        {
+            List<double> numbers = new List<double>();
+            foreach (var number in listRandomNumbers.Items)
+            {
+                if (double.TryParse(number.ToString(), out double value))
+                {
+                    numbers.Add(value);
+                }
+            }
+
+            double probability = Convert.ToDouble(numUpDwNC.Value) / 100;
+            probability = (1 - probability) / 2 + probability;
+
+            double variance = numbers.Variance();
+            double li = ChiSquared.InvCDF(numbers.Count - 1, 1 - probability) / (12 * (numbers.Count - 1));
+            double ls = ChiSquared.InvCDF(numbers.Count - 1, probability) / (12 * (numbers.Count - 1));
+
+            resultado.Text = variance.ToString() + " " + li.ToString() + " " + ls.ToString();
+        }
+
+        private void btnUniformentTest_Click(object sender, EventArgs e)
+        {
+            List<double> numbers = new List<double>();
+            foreach (var number in listRandomNumbers.Items)
+            {
+                if (double.TryParse(number.ToString(), out double value))
+                {
+                    numbers.Add(value);
+                }
+            }
+
+            double probability = Convert.ToDouble(numUpDwNC.Value) / 100;
+            probability = (1 - probability) / 2 + probability;
+
+            int n = numbers.Count;
+            double m = Math.Ceiling(Math.Sqrt(n));
+
+            List<double> inferiorInterval = new List<double>();
+            List<double> superiorInterval = new List<double>();
+            inferiorInterval.Add(0);
+            superiorInterval.Add(0.1);
+            for (int i = 0; i < m-1; i++)
+            {
+                inferiorInterval.Add(inferiorInterval[i] + m/100);
+                superiorInterval.Add(superiorInterval[i] + m/100);
+            }
+            Console.WriteLine(inferiorInterval.ToArray().ToString());
+            Console.WriteLine(superiorInterval.ToArray().ToString());
+
+        }
+
     }
 }

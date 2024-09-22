@@ -56,7 +56,7 @@
             cmbAlgorithm.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbAlgorithm.FormattingEnabled = true;
             cmbAlgorithm.Items.AddRange(new object[] { "Cuadrados medios", "Productos medios", "Multiplicador constante" });
-            cmbAlgorithm.Location = new Point(587, 51);
+            cmbAlgorithm.Location = new Point(881, 50);
             cmbAlgorithm.Name = "cmbAlgorithm";
             cmbAlgorithm.Size = new Size(207, 28);
             cmbAlgorithm.TabIndex = 0;
@@ -99,14 +99,14 @@
             // listRandomNumbers
             // 
             listRandomNumbers.FormattingEnabled = true;
-            listRandomNumbers.Location = new Point(31, 342);
+            listRandomNumbers.Location = new Point(29, 259);
             listRandomNumbers.Name = "listRandomNumbers";
-            listRandomNumbers.Size = new Size(160, 184);
+            listRandomNumbers.Size = new Size(160, 264);
             listRandomNumbers.TabIndex = 5;
             // 
             // btnGenerate
             // 
-            btnGenerate.Location = new Point(587, 134);
+            btnGenerate.Location = new Point(881, 109);
             btnGenerate.Name = "btnGenerate";
             btnGenerate.Size = new Size(207, 27);
             btnGenerate.TabIndex = 6;
@@ -132,6 +132,7 @@
             btnVariabilityTest.TabIndex = 8;
             btnVariabilityTest.Text = "Prueba de varianza";
             btnVariabilityTest.UseVisualStyleBackColor = true;
+            btnVariabilityTest.Click += btnVariabilityTest_Click;
             // 
             // btnUniformentTest
             // 
@@ -141,11 +142,12 @@
             btnUniformentTest.TabIndex = 9;
             btnUniformentTest.Text = "Prueba de uniformidad";
             btnUniformentTest.UseVisualStyleBackColor = true;
+            btnUniformentTest.Click += btnUniformentTest_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(29, 317);
+            label3.Location = new Point(27, 234);
             label3.Name = "label3";
             label3.Size = new Size(143, 20);
             label3.TabIndex = 10;
@@ -154,7 +156,7 @@
             // txtPivot
             // 
             txtPivot.Enabled = false;
-            txtPivot.Location = new Point(29, 229);
+            txtPivot.Location = new Point(478, 50);
             txtPivot.Name = "txtPivot";
             txtPivot.Size = new Size(160, 27);
             txtPivot.TabIndex = 12;
@@ -165,7 +167,7 @@
             // 
             lblPivot.AutoSize = true;
             lblPivot.Enabled = false;
-            lblPivot.Location = new Point(29, 206);
+            lblPivot.Location = new Point(478, 27);
             lblPivot.Name = "lblPivot";
             lblPivot.Size = new Size(70, 20);
             lblPivot.TabIndex = 11;
@@ -198,7 +200,7 @@
             // 
             lblErrPivot.AutoSize = true;
             lblErrPivot.ForeColor = Color.Red;
-            lblErrPivot.Location = new Point(29, 259);
+            lblErrPivot.Location = new Point(478, 80);
             lblErrPivot.Name = "lblErrPivot";
             lblErrPivot.Size = new Size(94, 20);
             lblErrPivot.TabIndex = 16;
@@ -208,7 +210,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(587, 28);
+            label1.Location = new Point(881, 27);
             label1.Name = "label1";
             label1.Size = new Size(77, 20);
             label1.TabIndex = 17;
@@ -233,17 +235,17 @@
             // resultado
             // 
             resultado.AutoSize = true;
-            resultado.Location = new Point(519, 369);
+            resultado.Location = new Point(497, 318);
             resultado.Name = "resultado";
-            resultado.Size = new Size(50, 20);
+            resultado.Size = new Size(75, 20);
             resultado.TabIndex = 20;
-            resultado.Text = "label5";
+            resultado.Text = "Resultado";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(806, 551);
+            ClientSize = new Size(1100, 539);
             Controls.Add(resultado);
             Controls.Add(numUpDwNC);
             Controls.Add(label4);
