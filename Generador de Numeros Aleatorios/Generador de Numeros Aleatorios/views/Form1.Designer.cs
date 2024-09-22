@@ -47,6 +47,7 @@
             label1 = new Label();
             label4 = new Label();
             numUpDwNC = new NumericUpDown();
+            resultado = new Label();
             ((System.ComponentModel.ISupportInitialize)numUpDwNC).BeginInit();
             SuspendLayout();
             // 
@@ -121,6 +122,7 @@
             btnAverageTest.TabIndex = 7;
             btnAverageTest.Text = "Prueba de medias";
             btnAverageTest.UseVisualStyleBackColor = true;
+            btnAverageTest.Click += btnAverageTest_Click;
             // 
             // btnVariabilityTest
             // 
@@ -228,11 +230,21 @@
             numUpDwNC.Size = new Size(132, 27);
             numUpDwNC.TabIndex = 19;
             // 
+            // resultado
+            // 
+            resultado.AutoSize = true;
+            resultado.Location = new Point(519, 369);
+            resultado.Name = "resultado";
+            resultado.Size = new Size(50, 20);
+            resultado.TabIndex = 20;
+            resultado.Text = "label5";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(806, 551);
+            Controls.Add(resultado);
             Controls.Add(numUpDwNC);
             Controls.Add(label4);
             Controls.Add(label1);
@@ -280,5 +292,6 @@
         private Label label1;
         private Label label4;
         private NumericUpDown numUpDwNC;
+        private Label resultado;
     }
 }

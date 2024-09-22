@@ -1,6 +1,9 @@
 using System.Collections.ObjectModel;
 using System.Runtime.Intrinsics.X86;
 using System.Xml.Serialization;
+using MathNet.Numerics.Statistics;
+using MathNet.Numerics.Distributions;
+using System.Windows.Forms;
 
 namespace Generador_de_Numeros_Aleatorios
 {
@@ -261,6 +264,25 @@ namespace Generador_de_Numeros_Aleatorios
                 default:
                     break;
             }
+        }
+
+        private void btnAverageTest_Click(object sender, EventArgs e)
+        {
+            List<double> numbers = new List<double>();
+            foreach (var number in listRandomNumbers.Items)
+            {
+                if (double.TryParse(number.ToString(), out double value))
+                {
+                    numbers.Add(value);
+                }
+            }
+            double mean = numbers.Average();
+            resultado.Text = mean.ToString();
+            double probability = Convert.ToDouble(numUpDwNC.Value)/100;
+            probability = (1 - probability) / 2 + probability;
+            double li = 0.5-Normal.InvCDF(0, 1, probability)*(1/Math.Sqrt(12*numbers.Count));
+            resultado.Text = resultado.Text + " " + li.ToString();
+
         }
     }
 }
