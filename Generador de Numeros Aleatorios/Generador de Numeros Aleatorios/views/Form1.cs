@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Numerics;
 using System.Runtime.Intrinsics.X86;
 using System.Xml.Serialization;
 using MathNet.Numerics.Statistics;
@@ -183,6 +184,12 @@ namespace Generador_de_Numeros_Aleatorios
             for (int i = 0; i < amount; i++)
             {
                 seed = GetMeanNumbers(seedLength, Math.Pow(long.Parse(seed), 2).ToString());
+                if (int.Parse(seed) == 0)
+                {
+                    MessageBox.Show("Solo se pueden generar " + i + " números con la semilla ingresada.",
+                        "Límite de generación", MessageBoxButtons.OK);
+                    return list;
+                }
                 list.Add("0." + seed);
             }
             return list;
@@ -200,6 +207,12 @@ namespace Generador_de_Numeros_Aleatorios
             {
                 string aux = seed2;
                 seed2 = GetMeanNumbers(seedLength, (int.Parse(seed1) * int.Parse(seed2)).ToString());
+                if (int.Parse(seed2) == 0)
+                {
+                    MessageBox.Show("Solo se pueden generar " + i + " números con la semilla ingresada.",
+                        "Límite de generación", MessageBoxButtons.OK);
+                    return list;
+                }
                 seed1 = aux;
                 list.Add("0." + seed2);
             }
@@ -217,6 +230,12 @@ namespace Generador_de_Numeros_Aleatorios
             for (int i = 0; i < amount; i++)
             {
                 seed = GetMeanNumbers(seedLength, (int.Parse(multiplier) * int.Parse(seed)).ToString());
+                if (int.Parse(seed) == 0)
+                {
+                    MessageBox.Show("Solo se pueden generar " + i + " números con la semilla ingresada.",
+                        "Límite de generación", MessageBoxButtons.OK);
+                    return list;
+                }
                 list.Add("0." + seed);
             }
             return list;
