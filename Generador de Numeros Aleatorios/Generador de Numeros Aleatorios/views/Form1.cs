@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Runtime.Intrinsics.X86;
+using System.Xml.Serialization;
 
 namespace Generador_de_Numeros_Aleatorios
 {
@@ -8,13 +9,140 @@ namespace Generador_de_Numeros_Aleatorios
         public Form1()
         {
             InitializeComponent();
+            cmbAlgorithm.SelectedIndex = 0;
+        }
+
+        private bool inputValidation()
+        {
+            bool errSeed;
+            bool errNumOfNumbers;
+            bool errPivot;
+
+            if (txtSeed.Text.Length < 4)
+            {
+                lblErrSeed.Visible = true;
+                lblErrSeed.Text = "La semilla debe contener al menos 4 dígitos.";
+                errSeed = true;
+            }
+            else
+            {
+                if (!int.TryParse(txtSeed.Text, out _))
+                {
+                    lblErrSeed.Visible = true;
+                    lblErrSeed.Text = "Semilla inválida.";
+                    errSeed = true;
+                }
+                else
+                {
+                    lblErrSeed.Visible = false;
+                    errSeed = false;
+                }
+            }
+
+            if (txtNumOfNumbers.Text.Length == 0)
+            {
+                lblErrNum.Visible = true;
+                lblErrNum.Text = "Ingrese la cantidad de números.";
+                errNumOfNumbers = true;
+            }
+            else
+            {
+                if (!int.TryParse(txtNumOfNumbers.Text, out _))
+                {
+                    lblErrNum.Visible = true;
+                    lblErrNum.Text = "Cantidad inválida.";
+                    errNumOfNumbers = true;
+                }
+                else
+                {
+                    lblErrNum.Visible = false;
+                    errNumOfNumbers = false;
+                }
+            }
+
+            if (txtPivot.Visible == true)
+            {
+                if (lblPivot.Text == "Semilla 2")
+                {
+                    if (txtPivot.Text.Length != txtSeed.Text.Length || txtPivot.Text.Length == 0)
+                    {
+                        lblErrPivot.Visible = true;
+                        lblErrPivot.Text = "Las semillas deben contener la misma cantidad de dígitos.";
+                        errPivot = true;
+                    }
+                    else
+                    {
+                        if (!int.TryParse(txtPivot.Text, out _))
+                        {
+                            lblErrPivot.Visible = true;
+                            lblErrPivot.Text = "Semilla 2 inválida.";
+                            errPivot = true;
+                        }
+                        else
+                        {
+                            lblErrPivot.Visible = false;
+                            errPivot = false;
+                        }
+                    }
+                }
+                else
+                {
+                    if (txtPivot.Text.Length < 4)
+                    {
+                        lblErrPivot.Visible = true;
+                        lblErrPivot.Text = "El multiplicador debe contener al menos 4 dígitos.";
+                        errPivot = true;
+                    }
+                    else
+                    {
+                        if (!int.TryParse(txtPivot.Text, out _))
+                        {
+                            lblErrPivot.Visible = true;
+                            lblErrPivot.Text = "Multiplicador inválido.";
+                            errPivot = true;
+                        }
+                        else
+                        {
+                            lblErrPivot.Visible = false;
+                            errPivot = false;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                errPivot = false;
+            }
+
+            if (errSeed == false && errNumOfNumbers == false && errPivot == false)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private void txt_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txtActual = sender as TextBox;
+            if (txtActual == txtSeed)
+            {
+                lblErrSeed.Visible = false;
+            }
+            else if (txtActual == txtNumOfNumbers)
+            {
+                lblErrNum.Visible = false;
+            }
+            else
+            {
+                lblErrPivot.Visible = false;
+            }
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            if (txtSeed.Text.Length < 4) return;
-            if (txtNumOfNumbers.Text.Length == 0) return;
-            if (cmbAlgorithm.SelectedIndex < 0) return;
+            if (inputValidation() == false) return;
 
             Collection<String> randomNumbersList = new Collection<String>();
             listRandomNumbers.Items.Clear();
@@ -39,7 +167,7 @@ namespace Generador_de_Numeros_Aleatorios
                     break;
             }
 
-            
+
         }
 
         private Collection<String> MeanSqueres()
@@ -103,6 +231,10 @@ namespace Generador_de_Numeros_Aleatorios
 
         private void cmbAlgorithm_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lblErrPivot.Visible = false;
+            lblErrNum.Visible = false;
+            lblErrSeed.Visible = false;
+
             int index = cmbAlgorithm.SelectedIndex;
             switch (index)
             {
@@ -110,6 +242,7 @@ namespace Generador_de_Numeros_Aleatorios
                     lblPivot.Visible = false;
                     txtPivot.Visible = false;
                     txtPivot.Enabled = false;
+                    txtPivot.Text = string.Empty;
                     break;
                 case 1:
                     lblPivot.Text = "Semilla 2";
