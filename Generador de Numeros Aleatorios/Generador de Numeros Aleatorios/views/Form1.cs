@@ -233,7 +233,7 @@ namespace Generador_de_Numeros_Aleatorios
             string multiplier = txtMPivot.Text;
             int amount = Convert.ToInt32(txtMNumOfNumbers.Text);
             int seedLength = seed.Length;
-
+            string temp = seed;
             Collection<String> list = new Collection<String>();
             for (int i = 0; i < amount; i++)
             {
@@ -245,6 +245,7 @@ namespace Generador_de_Numeros_Aleatorios
                     return list;
                 }
                 list.Add("0." + seed);
+                multiplier = temp;
             }
             return list;
         }
@@ -257,7 +258,7 @@ namespace Generador_de_Numeros_Aleatorios
 
             if (dif % 2 != 0)
             { 
-                seed = "0" + seed; // Agregar el 0 a la izq si la long es 7;
+                seed = "0" + seed; // Agregar el 0 a la izq si la long es impar;
                 dif++;
             }
 
