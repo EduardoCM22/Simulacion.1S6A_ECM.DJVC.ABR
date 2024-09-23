@@ -610,7 +610,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1650, 1100);
+            ClientSize = new Size(1650, 1000);
             Controls.Add(gpbTestResultsU);
             Controls.Add(btnMNumsToFile);
             Controls.Add(lblMErrGen);

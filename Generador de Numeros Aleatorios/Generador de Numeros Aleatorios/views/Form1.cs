@@ -27,7 +27,7 @@ namespace Generador_de_Numeros_Aleatorios
         }
 
         static bool genNum = false;
-        static int genAmount = 0;
+        static BigInteger genAmount = 0;
         private bool inputValidation()
         {
             bool errSeed;
@@ -42,7 +42,7 @@ namespace Generador_de_Numeros_Aleatorios
             }
             else
             {
-                if (!long.TryParse(txtMSeed.Text, out _))
+                if (!BigInteger.TryParse(txtMSeed.Text, out _))
                 {
                     lblMErrSeed.Visible = true;
                     lblMErrSeed.Text = "Semilla inválida.";
@@ -63,7 +63,7 @@ namespace Generador_de_Numeros_Aleatorios
             }
             else
             {
-                if (!long.TryParse(txtMNumOfNumbers.Text, out _))
+                if (!BigInteger.TryParse(txtMNumOfNumbers.Text, out _))
                 {
                     lblMErrNum.Visible = true;
                     lblMErrNum.Text = "Cantidad inválida.";
@@ -88,7 +88,7 @@ namespace Generador_de_Numeros_Aleatorios
                     }
                     else
                     {
-                        if (!long.TryParse(txtMPivot.Text, out _))
+                        if (!BigInteger.TryParse(txtMPivot.Text, out _))
                         {
                             lblMErrPivot.Visible = true;
                             lblMErrPivot.Text = "Semilla 2 inválida.";
@@ -111,7 +111,7 @@ namespace Generador_de_Numeros_Aleatorios
                     }
                     else
                     {
-                        if (!long.TryParse(txtMPivot.Text, out _))
+                        if (!BigInteger.TryParse(txtMPivot.Text, out _))
                         {
                             lblMErrPivot.Visible = true;
                             lblMErrPivot.Text = "Multiplicador inválido.";
@@ -176,7 +176,7 @@ namespace Generador_de_Numeros_Aleatorios
         private Collection<String> MeanSqueres()
         {
             string seed = txtMSeed.Text;
-            int amount = Convert.ToInt32(txtMNumOfNumbers.Text);
+            BigInteger amount = BigInteger.Parse(txtMNumOfNumbers.Text);
             int seedLength = seed.Length;
             Collection<String> list = new Collection<String>();
 
@@ -203,7 +203,7 @@ namespace Generador_de_Numeros_Aleatorios
         {
             string seed1 = txtMSeed.Text;
             string seed2 = txtMPivot.Text;
-            int amount = Convert.ToInt32(txtMNumOfNumbers.Text);
+            BigInteger amount = BigInteger.Parse(txtMNumOfNumbers.Text);
             int seedLength = seed1.Length;
 
             Collection<String> list = new Collection<String>();
@@ -233,7 +233,7 @@ namespace Generador_de_Numeros_Aleatorios
         {
             string seed = txtMSeed.Text;
             string multiplier = txtMPivot.Text;
-            int amount = Convert.ToInt32(txtMNumOfNumbers.Text);
+            BigInteger amount = BigInteger.Parse(txtMNumOfNumbers.Text);
             int seedLength = seed.Length;
 
             Collection<String> list = new Collection<String>();
@@ -559,7 +559,7 @@ namespace Generador_de_Numeros_Aleatorios
             lblMValueN.Text = "N = " + n.ToString();
             lblMValueM.Text = "M = " + ((int)m).ToString();
             lblMChiCompareToResult.Text = "Chi cuadrada: " + chiQuad +
-                (result < chiQuad ? " > " : " < ") + result;
+                (result < chiQuad ? " > Valor de tabla: " : " < Valor de tabla: ") + result;
 
             lblMValueN.Visible = true;
             lblMValueM.Visible = true;
