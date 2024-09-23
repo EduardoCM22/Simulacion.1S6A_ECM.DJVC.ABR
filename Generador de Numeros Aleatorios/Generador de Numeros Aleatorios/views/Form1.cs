@@ -7,6 +7,7 @@ using MathNet.Numerics.Distributions;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System;
 
 namespace Generador_de_Numeros_Aleatorios
 {
@@ -63,7 +64,8 @@ namespace Generador_de_Numeros_Aleatorios
             }
             else
             {
-                if (!int.TryParse(txtMNumOfNumbers.Text, out _))
+                int amount;
+                if (!int.TryParse(txtMNumOfNumbers.Text, out amount))
                 {
                     lblMErrNum.Visible = true;
                     lblMErrNum.Text = "Cantidad inválida.";
@@ -71,8 +73,17 @@ namespace Generador_de_Numeros_Aleatorios
                 }
                 else
                 {
-                    lblMErrNum.Visible = false;
-                    errNumOfNumbers = false;
+                    if (amount == 0)
+                    {
+                        lblMErrNum.Visible = true;
+                        lblMErrNum.Text = "Cantidad inválida.";
+                        errNumOfNumbers = true;
+                    }
+                    else
+                    {
+                        lblMErrNum.Visible = false;
+                        errNumOfNumbers = false;
+                    }
                 }
             }
 
@@ -137,6 +148,20 @@ namespace Generador_de_Numeros_Aleatorios
             else
             {
                 return false;
+            }
+        }
+        private bool testValidation()
+        {
+            if (!genNum)
+            {
+                lblMErrGen.Visible = true;
+                lblMErrGen.Text = "Genera primero los números.";
+                return false;
+            }
+            else
+            {
+                lblMErrGen.Visible = false;
+                return true;
             }
         }
         private void txt_TextChanged(object sender, EventArgs e)
@@ -247,11 +272,15 @@ namespace Generador_de_Numeros_Aleatorios
                 TManager.Theme = MaterialSkinManager.Themes.DARK;
                 swMLight.Text = "Dark";
             }
+            inputValidation();
         }
 
+        static bool genNum = false;
+        static int genAmount = 0;
         private void btnMGenerate_Click(object sender, EventArgs e)
         {
             if (inputValidation() == false) return;
+            genNum = true;
 
             Collection<String> randomNumbersList = new Collection<String>();
             listMRandomNumbers.Items.Clear();
@@ -262,12 +291,15 @@ namespace Generador_de_Numeros_Aleatorios
             {
                 case 0:
                     randomNumbersList = MeanSqueres();
+                    genAmount = randomNumbersList.Count;
                     break;
                 case 1:
                     randomNumbersList = MeanProducts();
+                    genAmount = randomNumbersList.Count;
                     break;
                 case 2:
                     randomNumbersList = ConstantMultiplier();
+                    genAmount = randomNumbersList.Count;
                     break;
                 default:
                     break;
@@ -282,6 +314,9 @@ namespace Generador_de_Numeros_Aleatorios
             gpbTestResultsMV.Visible = false;
             lblMTestTitle.Text = "";
             lsvMTestResults.Clear();
+            lsvMTestResultsU.Clear();
+            lblMValueM.Visible = false;
+            lblMValueN.Visible = false;
             lblMTestTitle.Visible = false;
             lsvMTestResults.Visible = false;
         }
@@ -339,6 +374,13 @@ namespace Generador_de_Numeros_Aleatorios
 
         private void btnMAverageTest_Click(object sender, EventArgs e)
         {
+            if (!testValidation()) return;
+            if (genAmount < 1)
+            {
+                lblMErrGen.Visible = true;
+                lblMErrGen.Text = "Prueba de medias requiere al menos 1 número generado.";
+                return;
+            }
 
             List<double> numbers = new List<double>();
             foreach (var number in listMRandomNumbers.Items)
@@ -362,6 +404,14 @@ namespace Generador_de_Numeros_Aleatorios
 
         private void btnMVariabilityTest_Click(object sender, EventArgs e)
         {
+            if (!testValidation()) return;
+            if (genAmount < 2)
+            {
+                lblMErrGen.Visible = true;
+                lblMErrGen.Text = "Prueba de varianza requiere al menos 2 números generados.";
+                return;
+            }
+
             List<double> numbers = new List<double>();
             foreach (var number in listMRandomNumbers.Items)
             {
@@ -385,6 +435,14 @@ namespace Generador_de_Numeros_Aleatorios
 
         private void btnMUniformentTest_Click(object sender, EventArgs e)
         {
+            if (!testValidation()) return;
+            if (genAmount < 2)
+            {
+                lblMErrGen.Visible = true;
+                lblMErrGen.Text = "Prueba de uniformidad requiere al menos 2 números generados.";
+                return;
+            }
+
             List<double> numbers = new List<double>();
             foreach (var number in listMRandomNumbers.Items)
             {
@@ -411,7 +469,7 @@ namespace Generador_de_Numeros_Aleatorios
             {
                 //inferiorInterval.Add(inferiorInterval[i] + intervalSize);
                 //superiorInterval.Add(superiorInterval[i] + intervalSize);
-                inferiorInterval.Add(Math.Round(i * intervalSize, 10)); 
+                inferiorInterval.Add(Math.Round(i * intervalSize, 10));
                 superiorInterval.Add(Math.Round((i + 1) * intervalSize, 10));
             }
 
