@@ -94,7 +94,6 @@
             // 
             // lblMErrSeed
             // 
-            lblMErrSeed.AutoSize = true;
             lblMErrSeed.Depth = 0;
             lblMErrSeed.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             lblMErrSeed.ForeColor = Color.Red;
@@ -102,7 +101,7 @@
             lblMErrSeed.Location = new Point(39, 205);
             lblMErrSeed.MouseState = MaterialSkin.MouseState.HOVER;
             lblMErrSeed.Name = "lblMErrSeed";
-            lblMErrSeed.Size = new Size(91, 19);
+            lblMErrSeed.Size = new Size(281, 49);
             lblMErrSeed.TabIndex = 23;
             lblMErrSeed.Text = "Error Semilla";
             lblMErrSeed.UseAccent = true;
@@ -163,14 +162,13 @@
             // 
             // lblMErrNum
             // 
-            lblMErrNum.AutoSize = true;
             lblMErrNum.Depth = 0;
             lblMErrNum.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             lblMErrNum.HighEmphasis = true;
             lblMErrNum.Location = new Point(40, 343);
             lblMErrNum.MouseState = MaterialSkin.MouseState.HOVER;
             lblMErrNum.Name = "lblMErrNum";
-            lblMErrNum.Size = new Size(100, 19);
+            lblMErrNum.Size = new Size(281, 56);
             lblMErrNum.TabIndex = 28;
             lblMErrNum.Text = "Error numeros";
             lblMErrNum.UseAccent = true;
@@ -210,14 +208,13 @@
             // 
             // lblMErrPivot
             // 
-            lblMErrPivot.AutoSize = true;
             lblMErrPivot.Depth = 0;
             lblMErrPivot.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             lblMErrPivot.HighEmphasis = true;
             lblMErrPivot.Location = new Point(355, 205);
             lblMErrPivot.MouseState = MaterialSkin.MouseState.HOVER;
             lblMErrPivot.Name = "lblMErrPivot";
-            lblMErrPivot.Size = new Size(91, 19);
+            lblMErrPivot.Size = new Size(281, 49);
             lblMErrPivot.TabIndex = 31;
             lblMErrPivot.Text = "Error Semilla";
             lblMErrPivot.UseAccent = true;
@@ -287,7 +284,7 @@
             btnMGenerate.Depth = 0;
             btnMGenerate.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnMGenerate.HighEmphasis = true;
-            btnMGenerate.Icon = Properties.Resources.dice_solid;
+            btnMGenerate.Icon = Properties.Resources.dice_three_solid;
             btnMGenerate.Location = new Point(671, 241);
             btnMGenerate.Margin = new Padding(4, 6, 4, 6);
             btnMGenerate.MouseState = MaterialSkin.MouseState.HOVER;
@@ -427,7 +424,7 @@
             lsvMTestResults.CausesValidation = false;
             lsvMTestResults.Depth = 0;
             lsvMTestResults.FullRowSelect = true;
-            lsvMTestResults.Location = new Point(18, 35);
+            lsvMTestResults.Location = new Point(58, 46);
             lsvMTestResults.MaximumSize = new Size(581, 50);
             lsvMTestResults.MinimumSize = new Size(640, 50);
             lsvMTestResults.MouseLocation = new Point(-1, -1);
@@ -446,7 +443,7 @@
             lblMTestTitle.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMTestTitle.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             lblMTestTitle.HighEmphasis = true;
-            lblMTestTitle.Location = new Point(18, 12);
+            lblMTestTitle.Location = new Point(58, 19);
             lblMTestTitle.MouseState = MaterialSkin.MouseState.HOVER;
             lblMTestTitle.Name = "lblMTestTitle";
             lblMTestTitle.Size = new Size(640, 19);
@@ -460,7 +457,7 @@
             gpbTestResultsMV.Controls.Add(lsvMTestResults);
             gpbTestResultsMV.Location = new Point(663, 444);
             gpbTestResultsMV.Name = "gpbTestResultsMV";
-            gpbTestResultsMV.Size = new Size(677, 112);
+            gpbTestResultsMV.Size = new Size(763, 112);
             gpbTestResultsMV.TabIndex = 45;
             gpbTestResultsMV.TabStop = false;
             gpbTestResultsMV.Visible = false;
@@ -490,7 +487,7 @@
             lblMValueN.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMValueN.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             lblMValueN.HighEmphasis = true;
-            lblMValueN.Location = new Point(663, 589);
+            lblMValueN.Location = new Point(663, 603);
             lblMValueN.MouseState = MaterialSkin.MouseState.HOVER;
             lblMValueN.Name = "lblMValueN";
             lblMValueN.Size = new Size(153, 23);
@@ -504,7 +501,7 @@
             lblMValueM.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMValueM.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             lblMValueM.HighEmphasis = true;
-            lblMValueM.Location = new Point(854, 589);
+            lblMValueM.Location = new Point(863, 603);
             lblMValueM.MouseState = MaterialSkin.MouseState.HOVER;
             lblMValueM.Name = "lblMValueM";
             lblMValueM.Size = new Size(153, 23);
@@ -530,6 +527,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1468, 1017);
             Controls.Add(lblMChiCompareToResult);
             Controls.Add(lblMValueM);
@@ -560,6 +558,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Padding = new Padding(3, 88, 3, 2);
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Generador de números aleatorios";
             grpTheme.ResumeLayout(false);
             grpTheme.PerformLayout();

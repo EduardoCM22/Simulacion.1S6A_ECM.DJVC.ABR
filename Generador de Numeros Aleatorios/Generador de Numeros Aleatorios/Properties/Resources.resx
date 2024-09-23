@@ -124,10 +124,13 @@
   <data name="chart-simple-solid" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\chart-simple-solid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="scale-balanced-solid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scale-balanced-solid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="chart-line-solid" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\chart-line-solid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="scale-balanced-solid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\scale-balanced-solid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="dice-three-solid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dice-three-solid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

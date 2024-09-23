@@ -12,21 +12,19 @@ namespace Generador_de_Numeros_Aleatorios
 {
     public partial class Form1 : MaterialForm
     {
+        MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
         public Form1()
         {
             InitializeComponent();
             sldMTrustLevel.Value = 95;
-            var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Lime600, Primary.Lime800, Primary.Lime800, Accent.Lime700, TextShade.BLACK);
-
-
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Grey900, Primary.Grey800, Primary.Grey700, Accent.Purple700, TextShade.WHITE);
 
             cmbMAlgorithm.SelectedIndex = 0;
         }
 
-        MaterialSkinManager TManager = MaterialSkinManager.Instance;
+        
 
         private bool inputValidation()
         {
@@ -42,7 +40,7 @@ namespace Generador_de_Numeros_Aleatorios
             }
             else
             {
-                if (!int.TryParse(txtMSeed.Text, out _))
+                if (!long.TryParse(txtMSeed.Text, out _))
                 {
                     lblMErrSeed.Visible = true;
                     lblMErrSeed.Text = "Semilla inválida.";
@@ -63,7 +61,7 @@ namespace Generador_de_Numeros_Aleatorios
             }
             else
             {
-                if (!int.TryParse(txtMNumOfNumbers.Text, out _))
+                if (!long.TryParse(txtMNumOfNumbers.Text, out _))
                 {
                     lblMErrNum.Visible = true;
                     lblMErrNum.Text = "Cantidad inválida.";
@@ -88,7 +86,7 @@ namespace Generador_de_Numeros_Aleatorios
                     }
                     else
                     {
-                        if (!int.TryParse(txtMPivot.Text, out _))
+                        if (!long.TryParse(txtMPivot.Text, out _))
                         {
                             lblMErrPivot.Visible = true;
                             lblMErrPivot.Text = "Semilla 2 inválida.";
@@ -111,7 +109,7 @@ namespace Generador_de_Numeros_Aleatorios
                     }
                     else
                     {
-                        if (!int.TryParse(txtMPivot.Text, out _))
+                        if (!long.TryParse(txtMPivot.Text, out _))
                         {
                             lblMErrPivot.Visible = true;
                             lblMErrPivot.Text = "Multiplicador inválido.";
@@ -167,7 +165,7 @@ namespace Generador_de_Numeros_Aleatorios
             for (int i = 0; i < amount; i++)
             {
                 seed = GetMeanNumbers(seedLength, Math.Pow(long.Parse(seed), 2).ToString());
-                if (int.Parse(seed) == 0)
+                if (long.Parse(seed) == 0)
                 {
                     MessageBox.Show("Solo se pueden generar " + i + " números con la semilla ingresada.",
                         "Límite de generación", MessageBoxButtons.OK);
@@ -230,6 +228,12 @@ namespace Generador_de_Numeros_Aleatorios
             int currentSeedLength = seed.Length; // Longitud de la semilla actual
             int dif = currentSeedLength - seedLength; // Diferencia entre las longitudes
 
+            if (dif % 2 != 0)
+            {
+                seed = "0" + seed; // Agregar el 0 a la izq si la long es impar;
+                dif++;
+            }
+
             nextSeed = seed.Substring(dif / 2, seedLength);
             return nextSeed;
         }
@@ -237,15 +241,27 @@ namespace Generador_de_Numeros_Aleatorios
 
         private void swMLight_CheckedChanged(object sender, EventArgs e)
         {
-            if (!swMLight.Checked)
+
+            Boolean errorIsVisible = false;
+            if (lblMErrNum.Visible || lblMErrSeed.Visible || lblMErrPivot.Visible)
             {
-                TManager.Theme = MaterialSkinManager.Themes.LIGHT;
-                swMLight.Text = "Light";
+                errorIsVisible = true;
+            }
+            if (swMLight.Checked)
+            {
+                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+                materialSkinManager.ColorScheme = new ColorScheme(Primary.Grey800, Primary.Grey700, Primary.Grey600, Accent.Purple400, TextShade.WHITE);
+                swMLight.Text = "Dark";
             }
             else
             {
-                TManager.Theme = MaterialSkinManager.Themes.DARK;
-                swMLight.Text = "Dark";
+                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+                materialSkinManager.ColorScheme = new ColorScheme(Primary.Grey900, Primary.Grey800, Primary.Grey700, Accent.Purple700, TextShade.WHITE);
+                swMLight.Text = "Light";
+            }
+            if (errorIsVisible)
+            {
+                inputValidation();
             }
         }
 
@@ -378,7 +394,6 @@ namespace Generador_de_Numeros_Aleatorios
             double li = ChiSquared.InvCDF(numbers.Count - 1, 1 - probability) / (12 * (numbers.Count - 1));
             double ls = ChiSquared.InvCDF(numbers.Count - 1, probability) / (12 * (numbers.Count - 1));
 
-            //resultado.Text = variance.ToString() + " " + li.ToString() + " " + ls.ToString();
 
             testResultsMV("Varianza", li.ToString(), variance.ToString(), ls.ToString());
         }
@@ -404,13 +419,10 @@ namespace Generador_de_Numeros_Aleatorios
 
             List<double> inferiorInterval = new List<double>();
             List<double> superiorInterval = new List<double>();
-            //inferiorInterval.Add(0);
-            //superiorInterval.Add(1.0/m);
             double intervalSize = 1.0 / m;
             for (int i = 0; i < m; i++)
             {
-                //inferiorInterval.Add(inferiorInterval[i] + intervalSize);
-                //superiorInterval.Add(superiorInterval[i] + intervalSize);
+
                 inferiorInterval.Add(Math.Round(i * intervalSize, 10)); 
                 superiorInterval.Add(Math.Round((i + 1) * intervalSize, 10));
             }
@@ -432,11 +444,11 @@ namespace Generador_de_Numeros_Aleatorios
 
             lsvMTestResultsU.Clear();
             int totalWidth = lsvMTestResultsU.ClientSize.Width;
-            lsvMTestResultsU.Columns.Add("Intervalo Inferior \"(\"", (int)(totalWidth * 0.2));
-            lsvMTestResultsU.Columns.Add("Intervalo Superior \"]\"", (int)(totalWidth * 0.2));
-            lsvMTestResultsU.Columns.Add("O", (int)(totalWidth * 0.2));
-            lsvMTestResultsU.Columns.Add("E = n/m", (int)(totalWidth * 0.2));
-            lsvMTestResultsU.Columns.Add("((E-O)^2)/E", (int)(totalWidth * 0.2));
+            lsvMTestResultsU.Columns.Add("Intervalo Inferior \"(\"", (int)(totalWidth * 0.25));
+            lsvMTestResultsU.Columns.Add("Intervalo Superior \"]\"", (int)(totalWidth * 0.25));
+            lsvMTestResultsU.Columns.Add("O", (int)(totalWidth * 0.1));
+            lsvMTestResultsU.Columns.Add("E = n/m", (int)(totalWidth * 0.15));
+            lsvMTestResultsU.Columns.Add("((E-O)^2)/E", (int)(totalWidth * 0.25));
 
             ListViewItem filaValores;
             double result = 0;
