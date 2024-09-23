@@ -195,7 +195,7 @@ namespace Generador_de_Numeros_Aleatorios
                 if (int.Parse(seed) == 0)
                 {
                     MessageBox.Show("Solo se pueden generar " + i + " números con la semilla ingresada.",
-                        "Límite de generación", MessageBoxButtons.OK);
+                        "Límite de generación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return list;
                 }
                 list.Add("0." + seed);
@@ -218,7 +218,7 @@ namespace Generador_de_Numeros_Aleatorios
                 if (int.Parse(seed2) == 0)
                 {
                     MessageBox.Show("Solo se pueden generar " + i + " números con la semilla ingresada.",
-                        "Límite de generación", MessageBoxButtons.OK);
+                        "Límite de generación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return list;
                 }
                 seed1 = aux;
@@ -241,7 +241,7 @@ namespace Generador_de_Numeros_Aleatorios
                 if (int.Parse(seed) == 0)
                 {
                     MessageBox.Show("Solo se pueden generar " + i + " números con la semilla ingresada.",
-                        "Límite de generación", MessageBoxButtons.OK);
+                        "Límite de generación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return list;
                 }
                 list.Add("0." + seed);
