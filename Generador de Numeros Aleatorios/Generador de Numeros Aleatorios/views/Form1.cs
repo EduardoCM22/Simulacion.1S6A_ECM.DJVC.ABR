@@ -5,16 +5,28 @@ using System.Xml.Serialization;
 using MathNet.Numerics.Statistics;
 using MathNet.Numerics.Distributions;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
+using MaterialSkin;
 
 namespace Generador_de_Numeros_Aleatorios
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MaterialForm
     {
         public Form1()
         {
             InitializeComponent();
-            cmbAlgorithm.SelectedIndex = 0;
+            sldMTrustLevel.Value = 95;
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Lime600, Primary.Lime800, Primary.Lime800, Accent.Lime700, TextShade.BLACK);
+
+
+
+            cmbMAlgorithm.SelectedIndex = 0;
         }
+
+        MaterialSkinManager TManager = MaterialSkinManager.Instance;
 
         private bool inputValidation()
         {
@@ -22,92 +34,92 @@ namespace Generador_de_Numeros_Aleatorios
             bool errNumOfNumbers;
             bool errPivot;
 
-            if (txtSeed.Text.Length < 4)
+            if (txtMSeed.Text.Length < 4)
             {
-                lblErrSeed.Visible = true;
-                lblErrSeed.Text = "La semilla debe contener al menos 4 dígitos.";
+                lblMErrSeed.Visible = true;
+                lblMErrSeed.Text = "La semilla debe contener al menos 4 dígitos.";
                 errSeed = true;
             }
             else
             {
-                if (!int.TryParse(txtSeed.Text, out _))
+                if (!int.TryParse(txtMSeed.Text, out _))
                 {
-                    lblErrSeed.Visible = true;
-                    lblErrSeed.Text = "Semilla inválida.";
+                    lblMErrSeed.Visible = true;
+                    lblMErrSeed.Text = "Semilla inválida.";
                     errSeed = true;
                 }
                 else
                 {
-                    lblErrSeed.Visible = false;
+                    lblMErrSeed.Visible = false;
                     errSeed = false;
                 }
             }
 
-            if (txtNumOfNumbers.Text.Length == 0)
+            if (txtMNumOfNumbers.Text.Length == 0)
             {
-                lblErrNum.Visible = true;
-                lblErrNum.Text = "Ingrese la cantidad de números.";
+                lblMErrNum.Visible = true;
+                lblMErrNum.Text = "Ingrese la cantidad de números.";
                 errNumOfNumbers = true;
             }
             else
             {
-                if (!int.TryParse(txtNumOfNumbers.Text, out _))
+                if (!int.TryParse(txtMNumOfNumbers.Text, out _))
                 {
-                    lblErrNum.Visible = true;
-                    lblErrNum.Text = "Cantidad inválida.";
+                    lblMErrNum.Visible = true;
+                    lblMErrNum.Text = "Cantidad inválida.";
                     errNumOfNumbers = true;
                 }
                 else
                 {
-                    lblErrNum.Visible = false;
+                    lblMErrNum.Visible = false;
                     errNumOfNumbers = false;
                 }
             }
 
-            if (txtPivot.Visible == true)
+            if (txtMPivot.Visible == true)
             {
-                if (lblPivot.Text == "Semilla 2")
+                if (lblMPivot.Text == "Semilla 2")
                 {
-                    if (txtPivot.Text.Length != txtSeed.Text.Length || txtPivot.Text.Length == 0)
+                    if (txtMPivot.Text.Length != txtMSeed.Text.Length || txtMPivot.Text.Length == 0)
                     {
-                        lblErrPivot.Visible = true;
-                        lblErrPivot.Text = "Las semillas deben contener la misma cantidad de dígitos.";
+                        lblMErrPivot.Visible = true;
+                        lblMErrPivot.Text = "Las semillas deben contener la misma cantidad de dígitos.";
                         errPivot = true;
                     }
                     else
                     {
-                        if (!int.TryParse(txtPivot.Text, out _))
+                        if (!int.TryParse(txtMPivot.Text, out _))
                         {
-                            lblErrPivot.Visible = true;
-                            lblErrPivot.Text = "Semilla 2 inválida.";
+                            lblMErrPivot.Visible = true;
+                            lblMErrPivot.Text = "Semilla 2 inválida.";
                             errPivot = true;
                         }
                         else
                         {
-                            lblErrPivot.Visible = false;
+                            lblMErrPivot.Visible = false;
                             errPivot = false;
                         }
                     }
                 }
                 else
                 {
-                    if (txtPivot.Text.Length < 4)
+                    if (txtMPivot.Text.Length < 4)
                     {
-                        lblErrPivot.Visible = true;
-                        lblErrPivot.Text = "El multiplicador debe contener al menos 4 dígitos.";
+                        lblMErrPivot.Visible = true;
+                        lblMErrPivot.Text = "El multiplicador debe contener al menos 4 dígitos.";
                         errPivot = true;
                     }
                     else
                     {
-                        if (!int.TryParse(txtPivot.Text, out _))
+                        if (!int.TryParse(txtMPivot.Text, out _))
                         {
-                            lblErrPivot.Visible = true;
-                            lblErrPivot.Text = "Multiplicador inválido.";
+                            lblMErrPivot.Visible = true;
+                            lblMErrPivot.Text = "Multiplicador inválido.";
                             errPivot = true;
                         }
                         else
                         {
-                            lblErrPivot.Visible = false;
+                            lblMErrPivot.Visible = false;
                             errPivot = false;
                         }
                     }
@@ -129,55 +141,26 @@ namespace Generador_de_Numeros_Aleatorios
         }
         private void txt_TextChanged(object sender, EventArgs e)
         {
-            TextBox txtActual = sender as TextBox;
-            if (txtActual == txtSeed)
+            MaterialTextBox txtActual = sender as MaterialTextBox;
+            if (txtActual.Equals(txtMSeed))
             {
-                lblErrSeed.Visible = false;
+                lblMErrSeed.Visible = false;
             }
-            else if (txtActual == txtNumOfNumbers)
+            else if (txtActual.Equals(txtMNumOfNumbers))
             {
-                lblErrNum.Visible = false;
+                lblMErrNum.Visible = false;
             }
             else
             {
-                lblErrPivot.Visible = false;
+                lblMErrPivot.Visible = false;
             }
         }
 
-        private void btnGenerate_Click(object sender, EventArgs e)
-        {
-            if (inputValidation() == false) return;
-
-            Collection<String> randomNumbersList = new Collection<String>();
-            listRandomNumbers.Items.Clear();
-
-            int algoritmo = cmbAlgorithm.SelectedIndex;
-
-            switch (algoritmo)
-            {
-                case 0:
-                    listRandomNumbers.Items.AddRange(
-                        MeanSqueres().ToArray());
-                    break;
-                case 1:
-                    listRandomNumbers.Items.AddRange(
-                        MeanProducts().ToArray());
-                    break;
-                case 2:
-                    listRandomNumbers.Items.AddRange(
-                        ConstantMultiplier().ToArray());
-                    break;
-                default:
-                    break;
-            }
-
-
-        }
 
         private Collection<String> MeanSqueres()
         {
-            string seed = txtSeed.Text;
-            int amount = Convert.ToInt32(txtNumOfNumbers.Text);
+            string seed = txtMSeed.Text;
+            int amount = Convert.ToInt32(txtMNumOfNumbers.Text);
             int seedLength = seed.Length;
             Collection<String> list = new Collection<String>();
 
@@ -197,9 +180,9 @@ namespace Generador_de_Numeros_Aleatorios
 
         private Collection<String> MeanProducts()
         {
-            string seed1 = txtSeed.Text;
-            string seed2 = txtPivot.Text;
-            int amount = Convert.ToInt32(txtNumOfNumbers.Text);
+            string seed1 = txtMSeed.Text;
+            string seed2 = txtMPivot.Text;
+            int amount = Convert.ToInt32(txtMNumOfNumbers.Text);
             int seedLength = seed1.Length;
 
             Collection<String> list = new Collection<String>();
@@ -221,9 +204,9 @@ namespace Generador_de_Numeros_Aleatorios
 
         private Collection<String> ConstantMultiplier()
         {
-            string seed = txtSeed.Text;
-            string multiplier = txtPivot.Text;
-            int amount = Convert.ToInt32(txtNumOfNumbers.Text);
+            string seed = txtMSeed.Text;
+            string multiplier = txtMPivot.Text;
+            int amount = Convert.ToInt32(txtMNumOfNumbers.Text);
             int seedLength = seed.Length;
 
             Collection<String> list = new Collection<String>();
@@ -251,113 +234,233 @@ namespace Generador_de_Numeros_Aleatorios
             return nextSeed;
         }
 
-        private void cmbAlgorithm_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            lblErrPivot.Visible = false;
-            lblErrNum.Visible = false;
-            lblErrSeed.Visible = false;
 
-            int index = cmbAlgorithm.SelectedIndex;
+        private void swMLight_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!swMLight.Checked)
+            {
+                TManager.Theme = MaterialSkinManager.Themes.LIGHT;
+                swMLight.Text = "Light";
+            }
+            else
+            {
+                TManager.Theme = MaterialSkinManager.Themes.DARK;
+                swMLight.Text = "Dark";
+            }
+        }
+
+        private void btnMGenerate_Click(object sender, EventArgs e)
+        {
+            if (inputValidation() == false) return;
+
+            Collection<String> randomNumbersList = new Collection<String>();
+            listMRandomNumbers.Items.Clear();
+
+            int algoritmo = cmbMAlgorithm.SelectedIndex;
+
+            switch (algoritmo)
+            {
+                case 0:
+                    randomNumbersList = MeanSqueres();
+                    break;
+                case 1:
+                    randomNumbersList = MeanProducts();
+                    break;
+                case 2:
+                    randomNumbersList = ConstantMultiplier();
+                    break;
+                default:
+                    break;
+            }
+
+
+            foreach (var number in randomNumbersList)
+            {
+                listMRandomNumbers.Items.Add(new MaterialListBoxItem(number));
+            }
+
+            gpbTestResultsMV.Visible = false;
+            lblMTestTitle.Text = "";
+            lsvMTestResults.Clear();
+            lblMTestTitle.Visible = false;
+            lsvMTestResults.Visible = false;
+        }
+
+        private void cmbMAlgorithm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblMErrPivot.Visible = false;
+            lblMErrNum.Visible = false;
+            lblMErrSeed.Visible = false;
+
+            int index = cmbMAlgorithm.SelectedIndex;
             switch (index)
             {
                 case 0:
-                    lblPivot.Visible = false;
-                    txtPivot.Visible = false;
-                    txtPivot.Enabled = false;
-                    txtPivot.Text = string.Empty;
+                    lblMPivot.Visible = false;
+                    txtMPivot.Visible = false;
+                    txtMPivot.Enabled = false;
+                    txtMPivot.Text = string.Empty;
                     break;
                 case 1:
-                    lblPivot.Text = "Semilla 2";
-                    lblPivot.Visible = true;
-                    lblPivot.Enabled = true;
-                    txtPivot.Visible = true;
-                    txtPivot.Enabled = true;
+                    lblMPivot.Text = "Semilla 2";
+                    lblMPivot.Visible = true;
+                    lblMPivot.Enabled = true;
+                    txtMPivot.Visible = true;
+                    txtMPivot.Enabled = true;
                     break;
                 case 2:
-                    lblPivot.Text = "Multiplicador";
-                    lblPivot.Enabled = true;
-                    lblPivot.Visible = true;
-                    txtPivot.Visible = true;
-                    txtPivot.Enabled = true;
+                    lblMPivot.Text = "Multiplicador";
+                    lblMPivot.Enabled = true;
+                    lblMPivot.Visible = true;
+                    txtMPivot.Visible = true;
+                    txtMPivot.Enabled = true;
                     break;
                 default:
                     break;
             }
         }
 
-        private void btnAverageTest_Click(object sender, EventArgs e)
+        private void testResultsMV(String method, String li, String mOrV, String ls)
         {
+            String methodColumn = method == "Varianza" ? "Varianza" : "Media";
+            lsvMTestResults.Clear();
+            int totalWidth = lsvMTestResults.ClientSize.Width;
+            lsvMTestResults.Columns.Add("Límite Inferior", (int)(totalWidth * (1.0 / 3.0)));
+            lsvMTestResults.Columns.Add(methodColumn, (int)(totalWidth * (1.0 / 3.0)));
+            lsvMTestResults.Columns.Add("Límite Superior", (int)(totalWidth * (1.0 / 3.0)));
+
+            ListViewItem filaValores = new ListViewItem(new[] { li.ToString(), mOrV.ToString(), ls.ToString() });
+            lsvMTestResults.Items.Add(filaValores);
+            lblMTestTitle.Text = "Prueba de " + method;
+            gpbTestResultsMV.Visible = true;
+            lblMTestTitle.Visible = true;
+            lsvMTestResults.Visible = true;
+        }
+
+        private void btnMAverageTest_Click(object sender, EventArgs e)
+        {
+
             List<double> numbers = new List<double>();
-            foreach (var number in listRandomNumbers.Items)
+            foreach (var number in listMRandomNumbers.Items)
             {
-                if (double.TryParse(number.ToString(), out double value))
+
+                if (double.TryParse(number.Text, out double value))
                 {
                     numbers.Add(value);
                 }
             }
 
-            double probability = Convert.ToDouble(numUpDwNC.Value) / 100;
+            double probability = Convert.ToDouble(sldMTrustLevel.Value) / 100;
             probability = (1 - probability) / 2 + probability;
 
             double mean = numbers.Average();
             double li = 0.5 - Normal.InvCDF(0, 1, probability) * (1 / Math.Sqrt(12 * numbers.Count));
             double ls = 0.5 + Normal.InvCDF(0, 1, probability) * (1 / Math.Sqrt(12 * numbers.Count));
 
-            resultado.Text = mean.ToString() + " " + li.ToString() + " " + ls.ToString();
-
+            testResultsMV("Medias", li.ToString(), mean.ToString(), ls.ToString());
         }
 
-        private void btnVariabilityTest_Click(object sender, EventArgs e)
+        private void btnMVariabilityTest_Click(object sender, EventArgs e)
         {
             List<double> numbers = new List<double>();
-            foreach (var number in listRandomNumbers.Items)
+            foreach (var number in listMRandomNumbers.Items)
             {
-                if (double.TryParse(number.ToString(), out double value))
+                if (double.TryParse(number.Text, out double value))
                 {
                     numbers.Add(value);
                 }
             }
 
-            double probability = Convert.ToDouble(numUpDwNC.Value) / 100;
+            double probability = Convert.ToDouble(sldMTrustLevel.Value) / 100;
             probability = (1 - probability) / 2 + probability;
 
             double variance = numbers.Variance();
             double li = ChiSquared.InvCDF(numbers.Count - 1, 1 - probability) / (12 * (numbers.Count - 1));
             double ls = ChiSquared.InvCDF(numbers.Count - 1, probability) / (12 * (numbers.Count - 1));
 
-            resultado.Text = variance.ToString() + " " + li.ToString() + " " + ls.ToString();
+            //resultado.Text = variance.ToString() + " " + li.ToString() + " " + ls.ToString();
+
+            testResultsMV("Varianza", li.ToString(), variance.ToString(), ls.ToString());
         }
 
-        private void btnUniformentTest_Click(object sender, EventArgs e)
+        private void btnMUniformentTest_Click(object sender, EventArgs e)
         {
             List<double> numbers = new List<double>();
-            foreach (var number in listRandomNumbers.Items)
+            foreach (var number in listMRandomNumbers.Items)
             {
-                if (double.TryParse(number.ToString(), out double value))
+                if (double.TryParse(number.Text, out double value))
                 {
                     numbers.Add(value);
                 }
             }
 
-            double probability = Convert.ToDouble(numUpDwNC.Value) / 100;
+            double probability = Convert.ToDouble(sldMTrustLevel.Value) / 100;
             probability = (1 - probability) / 2 + probability;
 
             int n = numbers.Count;
             double m = Math.Ceiling(Math.Sqrt(n));
 
+
+
             List<double> inferiorInterval = new List<double>();
             List<double> superiorInterval = new List<double>();
-            inferiorInterval.Add(0);
-            superiorInterval.Add(0.1);
-            for (int i = 0; i < m-1; i++)
+            //inferiorInterval.Add(0);
+            //superiorInterval.Add(1.0/m);
+            double intervalSize = 1.0 / m;
+            for (int i = 0; i < m; i++)
             {
-                inferiorInterval.Add(inferiorInterval[i] + m/100);
-                superiorInterval.Add(superiorInterval[i] + m/100);
+                //inferiorInterval.Add(inferiorInterval[i] + intervalSize);
+                //superiorInterval.Add(superiorInterval[i] + intervalSize);
+                inferiorInterval.Add(Math.Round(i * intervalSize, 10)); 
+                superiorInterval.Add(Math.Round((i + 1) * intervalSize, 10));
+            }
+
+            int[] frecuencias = new int[(int)m];
+
+            foreach (var number in numbers)
+            {
+                int indiceIntervalo = (int)(number / intervalSize);
+                if (indiceIntervalo >= m)
+                {
+                    indiceIntervalo = (int)m - 1;
+                }
+                frecuencias[indiceIntervalo]++;
             }
             Console.WriteLine(inferiorInterval.ToArray().ToString());
             Console.WriteLine(superiorInterval.ToArray().ToString());
 
-        }
 
+            lsvMTestResultsU.Clear();
+            int totalWidth = lsvMTestResultsU.ClientSize.Width;
+            lsvMTestResultsU.Columns.Add("Intervalo Inferior \"(\"", (int)(totalWidth * 0.2));
+            lsvMTestResultsU.Columns.Add("Intervalo Superior \"]\"", (int)(totalWidth * 0.2));
+            lsvMTestResultsU.Columns.Add("O", (int)(totalWidth * 0.2));
+            lsvMTestResultsU.Columns.Add("E = n/m", (int)(totalWidth * 0.2));
+            lsvMTestResultsU.Columns.Add("((E-O)^2)/E", (int)(totalWidth * 0.2));
+
+            ListViewItem filaValores;
+            double result = 0;
+            double ChiSqrContrubution = 0.0;
+            for (int i = 0; i < m; i++)
+            {
+                ChiSqrContrubution = (Math.Pow(((n / m) - frecuencias[i]), 2) / (n / m));
+                result += ChiSqrContrubution;
+                filaValores = new ListViewItem(new[] { inferiorInterval[i].ToString(),
+                    superiorInterval[i].ToString(),frecuencias[i].ToString(),(n/m).ToString(),ChiSqrContrubution.ToString() });
+                lsvMTestResultsU.Items.Add(filaValores);
+            }
+            double chiQuad = ChiSquared.InvCDF(m - 1, probability);
+
+            lblMValueN.Text = "N = " + n.ToString();
+            lblMValueM.Text = "M = " + ((int)m).ToString();
+            lblMChiCompareToResult.Text = "Chi cuadrada: " + chiQuad +
+                (result < chiQuad ? " > " : " < ") + result;
+
+            lblMValueN.Visible = true;
+            lblMValueM.Visible = true;
+            lblMChiCompareToResult.Visible = true;
+            lsvMTestResultsU.Visible = true;
+
+        }
     }
 }
