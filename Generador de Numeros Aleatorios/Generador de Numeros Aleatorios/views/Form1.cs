@@ -548,5 +548,23 @@ namespace Generador_de_Numeros_Aleatorios
             lsvMTestResultsU.Visible = true;
             gpbTestResultsU.Visible = true;
         }
+
+        private void sldMTrustLevel_onValueChanged(object sender, int newValue)
+        {
+            if (lsvMTestResults.Visible == true && lblMTestTitle.Text == "PRUEBA DE MEDIAS")
+            {
+                btnMAverageTest.PerformClick();
+            }
+            if (lsvMTestResults.Visible == true && lblMTestTitle.Text == "PRUEBA DE VARIANZA")
+            {
+                btnMVariabilityTest.PerformClick();
+            }
+            if (lsvMTestResultsU.Visible == true)
+            {
+                btnMUniformentTest.PerformClick();
+            }
+
+        }
+
     }
 }

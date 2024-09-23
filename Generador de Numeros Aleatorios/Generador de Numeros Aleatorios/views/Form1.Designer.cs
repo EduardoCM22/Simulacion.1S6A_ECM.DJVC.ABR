@@ -362,6 +362,7 @@
             sldMTrustLevel.Size = new Size(430, 40);
             sldMTrustLevel.TabIndex = 6;
             sldMTrustLevel.Text = "";
+            sldMTrustLevel.onValueChanged += sldMTrustLevel_onValueChanged;
             // 
             // lblMTrustLevel
             // 
