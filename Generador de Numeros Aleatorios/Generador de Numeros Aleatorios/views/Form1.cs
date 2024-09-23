@@ -255,6 +255,12 @@ namespace Generador_de_Numeros_Aleatorios
             int currentSeedLength = seed.Length; // Longitud de la semilla actual
             int dif = currentSeedLength - seedLength; // Diferencia entre las longitudes
 
+            if (dif % 2 != 0)
+            { 
+                seed = "0" + seed; // Agregar el 0 a la izq si la long es 7;
+                dif++;
+            }
+
             nextSeed = seed.Substring(dif / 2, seedLength);
             return nextSeed;
         }

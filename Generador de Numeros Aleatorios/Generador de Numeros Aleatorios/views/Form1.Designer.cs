@@ -558,11 +558,11 @@
             lblMErrGen.Depth = 0;
             lblMErrGen.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             lblMErrGen.HighEmphasis = true;
-            lblMErrGen.Location = new Point(456, 832);
+            lblMErrGen.Location = new Point(456, 828);
             lblMErrGen.Margin = new Padding(4, 0, 4, 0);
             lblMErrGen.MouseState = MaterialSkin.MouseState.HOVER;
             lblMErrGen.Name = "lblMErrGen";
-            lblMErrGen.Size = new Size(361, 76);
+            lblMErrGen.Size = new Size(361, 80);
             lblMErrGen.TabIndex = 50;
             lblMErrGen.Text = "Error generar";
             lblMErrGen.UseAccent = true;
@@ -570,10 +570,11 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(9F, 23F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1895, 1102);
+            ClientSize = new Size(1895, 1100);
+            Controls.Add(lblMErrPivot);
             Controls.Add(lblMErrGen);
             Controls.Add(lblMChiCompareToResult);
             Controls.Add(lblMValueM);
@@ -591,7 +592,6 @@
             Controls.Add(lblMAlgorithm);
             Controls.Add(cmbMAlgorithm);
             Controls.Add(txtMPivot);
-            Controls.Add(lblMErrPivot);
             Controls.Add(lblMPivot);
             Controls.Add(txtMNumOfNumbers);
             Controls.Add(lblMErrNum);
