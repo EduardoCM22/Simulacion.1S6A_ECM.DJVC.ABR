@@ -58,8 +58,11 @@
             lblMValueM = new MaterialSkin.Controls.MaterialLabel();
             lblMChiCompareToResult = new MaterialSkin.Controls.MaterialLabel();
             lblMErrGen = new MaterialSkin.Controls.MaterialLabel();
+            gpbTestResultsU = new GroupBox();
+            lblMTestTitle2 = new MaterialSkin.Controls.MaterialLabel();
             grpTheme.SuspendLayout();
             gpbTestResultsMV.SuspendLayout();
+            gpbTestResultsU.SuspendLayout();
             SuspendLayout();
             // 
             // txtMSeed
@@ -69,14 +72,14 @@
             txtMSeed.Depth = 0;
             txtMSeed.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtMSeed.LeadingIcon = null;
-            txtMSeed.Location = new Point(51, 234);
+            txtMSeed.Location = new Point(50, 173);
             txtMSeed.Margin = new Padding(4);
             txtMSeed.MaxLength = 50;
             txtMSeed.MouseState = MaterialSkin.MouseState.OUT;
             txtMSeed.Multiline = false;
             txtMSeed.Name = "txtMSeed";
-            txtMSeed.Size = new Size(361, 50);
-            txtMSeed.TabIndex = 21;
+            txtMSeed.Size = new Size(285, 50);
+            txtMSeed.TabIndex = 1;
             txtMSeed.Text = "";
             txtMSeed.TrailingIcon = null;
             txtMSeed.TextChanged += txt_TextChanged;
@@ -87,7 +90,7 @@
             lblMSeed1.Depth = 0;
             lblMSeed1.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMSeed1.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            lblMSeed1.Location = new Point(50, 192);
+            lblMSeed1.Location = new Point(50, 145);
             lblMSeed1.Margin = new Padding(4, 0, 4, 0);
             lblMSeed1.MouseState = MaterialSkin.MouseState.HOVER;
             lblMSeed1.Name = "lblMSeed1";
@@ -102,7 +105,7 @@
             lblMErrSeed.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             lblMErrSeed.ForeColor = Color.Red;
             lblMErrSeed.HighEmphasis = true;
-            lblMErrSeed.Location = new Point(50, 314);
+            lblMErrSeed.Location = new Point(50, 237);
             lblMErrSeed.Margin = new Padding(4, 0, 4, 0);
             lblMErrSeed.MouseState = MaterialSkin.MouseState.HOVER;
             lblMErrSeed.Name = "lblMErrSeed";
@@ -117,7 +120,7 @@
             // 
             swMLight.AutoSize = true;
             swMLight.Depth = 0;
-            swMLight.Location = new Point(141, 38);
+            swMLight.Location = new Point(91, 26);
             swMLight.Margin = new Padding(0);
             swMLight.MouseLocation = new Point(-1, -1);
             swMLight.MouseState = MaterialSkin.MouseState.HOVER;
@@ -135,7 +138,7 @@
             lblMTheme.Depth = 0;
             lblMTheme.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMTheme.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            lblMTheme.Location = new Point(28, 42);
+            lblMTheme.Location = new Point(25, 31);
             lblMTheme.Margin = new Padding(4, 0, 4, 0);
             lblMTheme.MouseState = MaterialSkin.MouseState.HOVER;
             lblMTheme.Name = "lblMTheme";
@@ -147,11 +150,11 @@
             // 
             grpTheme.Controls.Add(lblMTheme);
             grpTheme.Controls.Add(swMLight);
-            grpTheme.Location = new Point(1425, 192);
+            grpTheme.Location = new Point(1552, 142);
             grpTheme.Margin = new Padding(4);
             grpTheme.Name = "grpTheme";
             grpTheme.Padding = new Padding(4);
-            grpTheme.Size = new Size(287, 115);
+            grpTheme.Size = new Size(200, 78);
             grpTheme.TabIndex = 26;
             grpTheme.TabStop = false;
             // 
@@ -161,7 +164,7 @@
             lblMAmOfNum.Depth = 0;
             lblMAmOfNum.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMAmOfNum.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            lblMAmOfNum.Location = new Point(51, 403);
+            lblMAmOfNum.Location = new Point(51, 310);
             lblMAmOfNum.Margin = new Padding(4, 0, 4, 0);
             lblMAmOfNum.MouseState = MaterialSkin.MouseState.HOVER;
             lblMAmOfNum.Name = "lblMAmOfNum";
@@ -175,7 +178,7 @@
             lblMErrNum.Depth = 0;
             lblMErrNum.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             lblMErrNum.HighEmphasis = true;
-            lblMErrNum.Location = new Point(51, 525);
+            lblMErrNum.Location = new Point(50, 411);
             lblMErrNum.Margin = new Padding(4, 0, 4, 0);
             lblMErrNum.MouseState = MaterialSkin.MouseState.HOVER;
             lblMErrNum.Name = "lblMErrNum";
@@ -192,14 +195,14 @@
             txtMNumOfNumbers.Depth = 0;
             txtMNumOfNumbers.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtMNumOfNumbers.LeadingIcon = null;
-            txtMNumOfNumbers.Location = new Point(51, 445);
+            txtMNumOfNumbers.Location = new Point(50, 347);
             txtMNumOfNumbers.Margin = new Padding(4);
             txtMNumOfNumbers.MaxLength = 50;
             txtMNumOfNumbers.MouseState = MaterialSkin.MouseState.OUT;
             txtMNumOfNumbers.Multiline = false;
             txtMNumOfNumbers.Name = "txtMNumOfNumbers";
-            txtMNumOfNumbers.Size = new Size(361, 50);
-            txtMNumOfNumbers.TabIndex = 29;
+            txtMNumOfNumbers.Size = new Size(285, 50);
+            txtMNumOfNumbers.TabIndex = 2;
             txtMNumOfNumbers.Text = "";
             txtMNumOfNumbers.TrailingIcon = null;
             txtMNumOfNumbers.TextChanged += txt_TextChanged;
@@ -210,7 +213,7 @@
             lblMPivot.Depth = 0;
             lblMPivot.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMPivot.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            lblMPivot.Location = new Point(456, 192);
+            lblMPivot.Location = new Point(451, 149);
             lblMPivot.Margin = new Padding(4, 0, 4, 0);
             lblMPivot.MouseState = MaterialSkin.MouseState.HOVER;
             lblMPivot.Name = "lblMPivot";
@@ -221,15 +224,14 @@
             // 
             // lblMErrPivot
             // 
-            lblMErrPivot.AutoSize = true;
             lblMErrPivot.Depth = 0;
             lblMErrPivot.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             lblMErrPivot.HighEmphasis = true;
-            lblMErrPivot.Location = new Point(456, 314);
+            lblMErrPivot.Location = new Point(451, 241);
             lblMErrPivot.Margin = new Padding(4, 0, 4, 0);
             lblMErrPivot.MouseState = MaterialSkin.MouseState.HOVER;
             lblMErrPivot.Name = "lblMErrPivot";
-            lblMErrPivot.Size = new Size(91, 19);
+            lblMErrPivot.Size = new Size(376, 60);
             lblMErrPivot.TabIndex = 31;
             lblMErrPivot.Text = "Error Semilla";
             lblMErrPivot.UseAccent = true;
@@ -242,14 +244,14 @@
             txtMPivot.Depth = 0;
             txtMPivot.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtMPivot.LeadingIcon = null;
-            txtMPivot.Location = new Point(456, 234);
+            txtMPivot.Location = new Point(451, 177);
             txtMPivot.Margin = new Padding(4);
             txtMPivot.MaxLength = 50;
             txtMPivot.MouseState = MaterialSkin.MouseState.OUT;
             txtMPivot.Multiline = false;
             txtMPivot.Name = "txtMPivot";
-            txtMPivot.Size = new Size(361, 50);
-            txtMPivot.TabIndex = 32;
+            txtMPivot.Size = new Size(252, 50);
+            txtMPivot.TabIndex = 4;
             txtMPivot.Text = "";
             txtMPivot.TrailingIcon = null;
             txtMPivot.Visible = false;
@@ -270,14 +272,14 @@
             cmbMAlgorithm.IntegralHeight = false;
             cmbMAlgorithm.ItemHeight = 43;
             cmbMAlgorithm.Items.AddRange(new object[] { "Cuadrados medios", "Productos medios", "Multiplicador constante" });
-            cmbMAlgorithm.Location = new Point(863, 234);
+            cmbMAlgorithm.Location = new Point(887, 178);
             cmbMAlgorithm.Margin = new Padding(4);
             cmbMAlgorithm.MaxDropDownItems = 4;
             cmbMAlgorithm.MouseState = MaterialSkin.MouseState.OUT;
             cmbMAlgorithm.Name = "cmbMAlgorithm";
             cmbMAlgorithm.Size = new Size(360, 49);
             cmbMAlgorithm.StartIndex = 0;
-            cmbMAlgorithm.TabIndex = 33;
+            cmbMAlgorithm.TabIndex = 3;
             cmbMAlgorithm.SelectedIndexChanged += cmbMAlgorithm_SelectedIndexChanged;
             // 
             // lblMAlgorithm
@@ -286,7 +288,7 @@
             lblMAlgorithm.Depth = 0;
             lblMAlgorithm.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMAlgorithm.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            lblMAlgorithm.Location = new Point(863, 192);
+            lblMAlgorithm.Location = new Point(887, 149);
             lblMAlgorithm.Margin = new Padding(4, 0, 4, 0);
             lblMAlgorithm.MouseState = MaterialSkin.MouseState.HOVER;
             lblMAlgorithm.Name = "lblMAlgorithm";
@@ -303,13 +305,13 @@
             btnMGenerate.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnMGenerate.HighEmphasis = true;
             btnMGenerate.Icon = Properties.Resources.dice_solid;
-            btnMGenerate.Location = new Point(863, 369);
+            btnMGenerate.Location = new Point(886, 253);
             btnMGenerate.Margin = new Padding(5, 9, 5, 9);
             btnMGenerate.MouseState = MaterialSkin.MouseState.HOVER;
             btnMGenerate.Name = "btnMGenerate";
             btnMGenerate.NoAccentTextColor = Color.Empty;
             btnMGenerate.Size = new Size(361, 81);
-            btnMGenerate.TabIndex = 35;
+            btnMGenerate.TabIndex = 5;
             btnMGenerate.Text = "Generar números";
             btnMGenerate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
             btnMGenerate.UseAccentColor = false;
@@ -323,14 +325,14 @@
             listMRandomNumbers.Density = MaterialSkin.Controls.MaterialListBox.MaterialItemDensity.Default;
             listMRandomNumbers.Depth = 0;
             listMRandomNumbers.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            listMRandomNumbers.Location = new Point(50, 759);
+            listMRandomNumbers.Location = new Point(30, 523);
             listMRandomNumbers.Margin = new Padding(4);
             listMRandomNumbers.MouseState = MaterialSkin.MouseState.HOVER;
             listMRandomNumbers.Name = "listMRandomNumbers";
             listMRandomNumbers.RightToLeft = RightToLeft.No;
             listMRandomNumbers.SelectedIndex = -1;
             listMRandomNumbers.SelectedItem = null;
-            listMRandomNumbers.Size = new Size(361, 737);
+            listMRandomNumbers.Size = new Size(361, 544);
             listMRandomNumbers.TabIndex = 36;
             // 
             // lblMGeneratedNums
@@ -339,7 +341,7 @@
             lblMGeneratedNums.Depth = 0;
             lblMGeneratedNums.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMGeneratedNums.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            lblMGeneratedNums.Location = new Point(50, 717);
+            lblMGeneratedNums.Location = new Point(30, 481);
             lblMGeneratedNums.Margin = new Padding(4, 0, 4, 0);
             lblMGeneratedNums.MouseState = MaterialSkin.MouseState.HOVER;
             lblMGeneratedNums.Name = "lblMGeneratedNums";
@@ -353,12 +355,12 @@
             sldMTrustLevel.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             sldMTrustLevel.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             sldMTrustLevel.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            sldMTrustLevel.Location = new Point(433, 751);
+            sldMTrustLevel.Location = new Point(418, 521);
             sldMTrustLevel.Margin = new Padding(4);
             sldMTrustLevel.MouseState = MaterialSkin.MouseState.HOVER;
             sldMTrustLevel.Name = "sldMTrustLevel";
-            sldMTrustLevel.Size = new Size(384, 40);
-            sldMTrustLevel.TabIndex = 38;
+            sldMTrustLevel.Size = new Size(430, 40);
+            sldMTrustLevel.TabIndex = 6;
             sldMTrustLevel.Text = "";
             // 
             // lblMTrustLevel
@@ -367,7 +369,7 @@
             lblMTrustLevel.Depth = 0;
             lblMTrustLevel.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMTrustLevel.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            lblMTrustLevel.Location = new Point(456, 717);
+            lblMTrustLevel.Location = new Point(418, 481);
             lblMTrustLevel.Margin = new Padding(4, 0, 4, 0);
             lblMTrustLevel.MouseState = MaterialSkin.MouseState.HOVER;
             lblMTrustLevel.Name = "lblMTrustLevel";
@@ -383,13 +385,13 @@
             btnMAverageTest.Depth = 0;
             btnMAverageTest.HighEmphasis = true;
             btnMAverageTest.Icon = Properties.Resources.chart_simple_solid;
-            btnMAverageTest.Location = new Point(456, 917);
+            btnMAverageTest.Location = new Point(451, 693);
             btnMAverageTest.Margin = new Padding(5, 9, 5, 9);
             btnMAverageTest.MouseState = MaterialSkin.MouseState.HOVER;
             btnMAverageTest.Name = "btnMAverageTest";
             btnMAverageTest.NoAccentTextColor = Color.Empty;
             btnMAverageTest.Size = new Size(361, 81);
-            btnMAverageTest.TabIndex = 40;
+            btnMAverageTest.TabIndex = 7;
             btnMAverageTest.Text = "Prueba de medias";
             btnMAverageTest.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
             btnMAverageTest.UseAccentColor = false;
@@ -404,13 +406,13 @@
             btnMVariabilityTest.Depth = 0;
             btnMVariabilityTest.HighEmphasis = true;
             btnMVariabilityTest.Icon = Properties.Resources.chart_line_solid;
-            btnMVariabilityTest.Location = new Point(456, 1017);
+            btnMVariabilityTest.Location = new Point(451, 822);
             btnMVariabilityTest.Margin = new Padding(5, 9, 5, 9);
             btnMVariabilityTest.MouseState = MaterialSkin.MouseState.HOVER;
             btnMVariabilityTest.Name = "btnMVariabilityTest";
             btnMVariabilityTest.NoAccentTextColor = Color.Empty;
             btnMVariabilityTest.Size = new Size(361, 81);
-            btnMVariabilityTest.TabIndex = 41;
+            btnMVariabilityTest.TabIndex = 8;
             btnMVariabilityTest.Text = "Prueba de varianza";
             btnMVariabilityTest.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
             btnMVariabilityTest.UseAccentColor = false;
@@ -425,13 +427,13 @@
             btnMUniformentTest.Depth = 0;
             btnMUniformentTest.HighEmphasis = true;
             btnMUniformentTest.Icon = Properties.Resources.scale_balanced_solid;
-            btnMUniformentTest.Location = new Point(456, 1118);
+            btnMUniformentTest.Location = new Point(451, 954);
             btnMUniformentTest.Margin = new Padding(5, 9, 5, 9);
             btnMUniformentTest.MouseState = MaterialSkin.MouseState.HOVER;
             btnMUniformentTest.Name = "btnMUniformentTest";
             btnMUniformentTest.NoAccentTextColor = Color.Empty;
             btnMUniformentTest.Size = new Size(361, 81);
-            btnMUniformentTest.TabIndex = 42;
+            btnMUniformentTest.TabIndex = 9;
             btnMUniformentTest.Text = "Prueba de uniformidad";
             btnMUniformentTest.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
             btnMUniformentTest.UseAccentColor = false;
@@ -446,15 +448,14 @@
             lsvMTestResults.CausesValidation = false;
             lsvMTestResults.Depth = 0;
             lsvMTestResults.FullRowSelect = true;
-            lsvMTestResults.Location = new Point(41, 54);
+            lsvMTestResults.Location = new Point(36, 60);
             lsvMTestResults.Margin = new Padding(4);
-            lsvMTestResults.MaximumSize = new Size(747, 77);
-            lsvMTestResults.MinimumSize = new Size(823, 77);
+            lsvMTestResults.MinimumSize = new Size(200, 100);
             lsvMTestResults.MouseLocation = new Point(-1, -1);
             lsvMTestResults.MouseState = MaterialSkin.MouseState.OUT;
             lsvMTestResults.Name = "lsvMTestResults";
             lsvMTestResults.OwnerDraw = true;
-            lsvMTestResults.Size = new Size(823, 77);
+            lsvMTestResults.Size = new Size(794, 100);
             lsvMTestResults.TabIndex = 43;
             lsvMTestResults.UseCompatibleStateImageBehavior = false;
             lsvMTestResults.View = View.Details;
@@ -466,11 +467,11 @@
             lblMTestTitle.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMTestTitle.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             lblMTestTitle.HighEmphasis = true;
-            lblMTestTitle.Location = new Point(23, 19);
+            lblMTestTitle.Location = new Point(36, 27);
             lblMTestTitle.Margin = new Padding(4, 0, 4, 0);
             lblMTestTitle.MouseState = MaterialSkin.MouseState.HOVER;
             lblMTestTitle.Name = "lblMTestTitle";
-            lblMTestTitle.Size = new Size(823, 28);
+            lblMTestTitle.Size = new Size(794, 28);
             lblMTestTitle.TabIndex = 44;
             lblMTestTitle.TextAlign = ContentAlignment.MiddleCenter;
             lblMTestTitle.Visible = false;
@@ -479,11 +480,11 @@
             // 
             gpbTestResultsMV.Controls.Add(lblMTestTitle);
             gpbTestResultsMV.Controls.Add(lsvMTestResults);
-            gpbTestResultsMV.Location = new Point(869, 681);
+            gpbTestResultsMV.Location = new Point(887, 382);
             gpbTestResultsMV.Margin = new Padding(4);
             gpbTestResultsMV.Name = "gpbTestResultsMV";
             gpbTestResultsMV.Padding = new Padding(4);
-            gpbTestResultsMV.Size = new Size(870, 172);
+            gpbTestResultsMV.Size = new Size(865, 179);
             gpbTestResultsMV.TabIndex = 45;
             gpbTestResultsMV.TabStop = false;
             gpbTestResultsMV.Visible = false;
@@ -495,14 +496,14 @@
             lsvMTestResultsU.BorderStyle = BorderStyle.None;
             lsvMTestResultsU.Depth = 0;
             lsvMTestResultsU.FullRowSelect = true;
-            lsvMTestResultsU.Location = new Point(869, 980);
+            lsvMTestResultsU.Location = new Point(20, 124);
             lsvMTestResultsU.Margin = new Padding(4);
             lsvMTestResultsU.MinimumSize = new Size(257, 153);
             lsvMTestResultsU.MouseLocation = new Point(-1, -1);
             lsvMTestResultsU.MouseState = MaterialSkin.MouseState.OUT;
             lsvMTestResultsU.Name = "lsvMTestResultsU";
             lsvMTestResultsU.OwnerDraw = true;
-            lsvMTestResultsU.Size = new Size(981, 429);
+            lsvMTestResultsU.Size = new Size(830, 308);
             lsvMTestResultsU.TabIndex = 46;
             lsvMTestResultsU.UseCompatibleStateImageBehavior = false;
             lsvMTestResultsU.View = View.Details;
@@ -514,7 +515,7 @@
             lblMValueN.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMValueN.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             lblMValueN.HighEmphasis = true;
-            lblMValueN.Location = new Point(869, 902);
+            lblMValueN.Location = new Point(36, 85);
             lblMValueN.Margin = new Padding(4, 0, 4, 0);
             lblMValueN.MouseState = MaterialSkin.MouseState.HOVER;
             lblMValueN.Name = "lblMValueN";
@@ -529,7 +530,7 @@
             lblMValueM.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMValueM.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             lblMValueM.HighEmphasis = true;
-            lblMValueM.Location = new Point(1115, 902);
+            lblMValueM.Location = new Point(241, 85);
             lblMValueM.Margin = new Padding(4, 0, 4, 0);
             lblMValueM.MouseState = MaterialSkin.MouseState.HOVER;
             lblMValueM.Name = "lblMValueM";
@@ -544,11 +545,11 @@
             lblMChiCompareToResult.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             lblMChiCompareToResult.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             lblMChiCompareToResult.HighEmphasis = true;
-            lblMChiCompareToResult.Location = new Point(852, 1441);
+            lblMChiCompareToResult.Location = new Point(36, 446);
             lblMChiCompareToResult.Margin = new Padding(4, 0, 4, 0);
             lblMChiCompareToResult.MouseState = MaterialSkin.MouseState.HOVER;
             lblMChiCompareToResult.Name = "lblMChiCompareToResult";
-            lblMChiCompareToResult.Size = new Size(870, 35);
+            lblMChiCompareToResult.Size = new Size(778, 35);
             lblMChiCompareToResult.TabIndex = 49;
             lblMChiCompareToResult.Text = "Chi cuadrada: ";
             lblMChiCompareToResult.Visible = false;
@@ -558,7 +559,7 @@
             lblMErrGen.Depth = 0;
             lblMErrGen.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             lblMErrGen.HighEmphasis = true;
-            lblMErrGen.Location = new Point(456, 828);
+            lblMErrGen.Location = new Point(451, 596);
             lblMErrGen.Margin = new Padding(4, 0, 4, 0);
             lblMErrGen.MouseState = MaterialSkin.MouseState.HOVER;
             lblMErrGen.Name = "lblMErrGen";
@@ -568,18 +569,46 @@
             lblMErrGen.UseAccent = true;
             lblMErrGen.Visible = false;
             // 
+            // gpbTestResultsU
+            // 
+            gpbTestResultsU.Controls.Add(lblMTestTitle2);
+            gpbTestResultsU.Controls.Add(lblMValueM);
+            gpbTestResultsU.Controls.Add(lblMValueN);
+            gpbTestResultsU.Controls.Add(lblMChiCompareToResult);
+            gpbTestResultsU.Controls.Add(lsvMTestResultsU);
+            gpbTestResultsU.Location = new Point(887, 569);
+            gpbTestResultsU.Margin = new Padding(4);
+            gpbTestResultsU.Name = "gpbTestResultsU";
+            gpbTestResultsU.Padding = new Padding(4);
+            gpbTestResultsU.Size = new Size(865, 498);
+            gpbTestResultsU.TabIndex = 51;
+            gpbTestResultsU.TabStop = false;
+            gpbTestResultsU.Visible = false;
+            // 
+            // lblMTestTitle2
+            // 
+            lblMTestTitle2.Depth = 0;
+            lblMTestTitle2.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            lblMTestTitle2.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            lblMTestTitle2.HighEmphasis = true;
+            lblMTestTitle2.Location = new Point(52, 27);
+            lblMTestTitle2.Margin = new Padding(4, 0, 4, 0);
+            lblMTestTitle2.MouseState = MaterialSkin.MouseState.HOVER;
+            lblMTestTitle2.Name = "lblMTestTitle2";
+            lblMTestTitle2.Size = new Size(778, 28);
+            lblMTestTitle2.TabIndex = 44;
+            lblMTestTitle2.Text = "Prueba de Uniformidad";
+            lblMTestTitle2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
-            ClientSize = new Size(1895, 1100);
+            AutoScroll = true;
+            ClientSize = new Size(1800, 1100);
+            Controls.Add(gpbTestResultsU);
             Controls.Add(lblMErrPivot);
             Controls.Add(lblMErrGen);
-            Controls.Add(lblMChiCompareToResult);
-            Controls.Add(lblMValueM);
-            Controls.Add(lblMValueN);
-            Controls.Add(lsvMTestResultsU);
             Controls.Add(gpbTestResultsMV);
             Controls.Add(btnMUniformentTest);
             Controls.Add(btnMVariabilityTest);
@@ -610,6 +639,7 @@
             grpTheme.ResumeLayout(false);
             grpTheme.PerformLayout();
             gpbTestResultsMV.ResumeLayout(false);
+            gpbTestResultsU.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -646,5 +676,7 @@
         private MaterialSkin.Controls.MaterialLabel lblMValueM;
         private MaterialSkin.Controls.MaterialLabel lblMChiCompareToResult;
         private MaterialSkin.Controls.MaterialLabel lblMErrGen;
+        private GroupBox gpbTestResultsU;
+        private MaterialSkin.Controls.MaterialLabel lblMTestTitle2;
     }
 }

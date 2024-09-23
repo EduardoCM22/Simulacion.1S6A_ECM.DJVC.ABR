@@ -20,8 +20,8 @@ namespace Generador_de_Numeros_Aleatorios
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Lime600, Primary.Lime800, Primary.Lime800, Accent.Lime700, TextShade.BLACK);
-
+            //materialSkinManager.ColorScheme = new ColorScheme(Primary.Lime600, Primary.Lime800, Primary.Lime800, Accent.Lime700, TextShade.BLACK);
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue600, Primary.Blue800, Primary.Blue900, Accent.Red400, TextShade.WHITE);
 
 
             cmbMAlgorithm.SelectedIndex = 0;
@@ -325,6 +325,7 @@ namespace Generador_de_Numeros_Aleatorios
             lblMValueN.Visible = false;
             lblMTestTitle.Visible = false;
             lsvMTestResults.Visible = false;
+            gpbTestResultsU.Visible = false;
         }
 
         private void cmbMAlgorithm_SelectedIndexChanged(object sender, EventArgs e)
@@ -524,7 +525,7 @@ namespace Generador_de_Numeros_Aleatorios
             lblMValueM.Visible = true;
             lblMChiCompareToResult.Visible = true;
             lsvMTestResultsU.Visible = true;
-
+            gpbTestResultsU.Visible = true;
         }
     }
 }
