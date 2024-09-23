@@ -458,6 +458,19 @@ namespace Generador_de_Numeros_Aleatorios
                     numbers.Add(value);
                 }
             }
+//            numbers = new List<double> {
+//    0.78, 0.96, 0.24, 0.73, 0.43, 0.16, 0.78, 0.47, 0.18, 0.55,
+//    0.04, 0.29, 0.68, 0.77, 0.16, 0.03, 0.79, 0.22, 0.37, 0.80,
+//    0.96, 0.26, 0.91, 0.55, 0.75, 0.55, 0.64, 0.39, 0.53, 0.45,
+//    0.61, 0.14, 0.38, 0.12, 0.40, 0.74, 0.78, 0.98, 0.27, 0.60,
+//    0.43, 0.67, 0.62, 0.32, 0.53, 0.54, 0.24, 0.29, 0.18, 0.08,
+//    0.82, 0.94, 0.19, 0.98, 0.41, 0.99, 0.74, 0.92, 0.14, 0.43,
+//    0.83, 0.88, 0.18, 0.21, 0.50, 0.13, 0.43, 0.69, 0.08, 0.12,
+//    0.22, 0.50, 0.16, 0.11, 0.18, 0.89, 0.80, 0.42, 0.29, 0.87,
+//    0.83, 0.79, 0.65, 0.28, 0.78, 0.49, 0.36, 0.86, 0.87, 0.64,
+//    0.51, 0.07, 0.18, 0.94, 0.50, 0.22, 0.66, 0.91, 0.48, 0.24
+//};
+
 
             double probability = Convert.ToDouble(sldMTrustLevel.Value) / 100;
             probability = (1 - probability) / 2 + probability;
@@ -485,10 +498,19 @@ namespace Generador_de_Numeros_Aleatorios
             foreach (var number in numbers)
             {
                 int indiceIntervalo = (int)(number / intervalSize);
+
+                // Ajusta el índice si el número es exactamente igual al límite superior
+                if (indiceIntervalo > 0 && number % intervalSize == 0)
+                {
+                    indiceIntervalo--;
+                }
+
+                // Asegúrate de que el índice no exceda el tamaño de la lista
                 if (indiceIntervalo >= m)
                 {
-                    indiceIntervalo = (int)m - 1;
+                    indiceIntervalo = Convert.ToInt32(m - 1); // Asigna al último intervalo si excede
                 }
+
                 frecuencias[indiceIntervalo]++;
             }
             Console.WriteLine(inferiorInterval.ToArray().ToString());
